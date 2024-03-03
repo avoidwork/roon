@@ -11,6 +11,6 @@ EXPOSE 5500/tcp
 EXPOSE 9330-9339/tcp
 EXPOSE 30000-30009/tcp
 EXPOSE 9003/udp
-EXPOSE 32768-65535/udp
+#EXPOSE 32768-65535/udp #too many ports for some docker clients to administrate
 
 CMD ["/opt/RoonServer/start.sh"]
