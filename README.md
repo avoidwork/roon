@@ -1,5 +1,5 @@
 # roon
-Roon core on Ubuntu 22.04 LTS
+Roon core on Debian 12
 
 ## Directories
 
