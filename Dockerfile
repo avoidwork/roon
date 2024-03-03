@@ -7,7 +7,7 @@ WORKDIR /root
 RUN wget https://download.roonlabs.net/builds/roonserver-installer-linuxx64.sh && chmod +x roonserver-installer-linuxx64.sh
 RUN echo "Y" | ./roonserver-installer-linuxx64.sh
 
-EXPOSE 5500/tcp
+EXPOSE 55000/tcp
 EXPOSE 9330-9339/tcp
 EXPOSE 30000-30009/tcp
 EXPOSE 9003/udp
