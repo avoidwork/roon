@@ -19,6 +19,30 @@ Recommended to bind mount:
 
 ## Usage
 
+### Compose
+
+```yaml
+version: "3.8"
+services:
+  roon:
+    image: avoidwork/roon:latest
+    container_name: roon
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /media/music:/music
+    ports:
+      - 55000:55000/tcp
+      - 9330-9339:9330-9339/tcp
+      - 30000-30009:30000-30009/tcp
+      - 9003:9003/udp
+    restart: unless-stopped
+```
+
+### Command Line Interface
+
 ```console
 docker run -d \
   --name=roon \
