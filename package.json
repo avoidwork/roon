@@ -1,0 +1,32 @@
+{
+  "name": "roon",
+  "version": "2.0.1392",
+  "description": "Roon Server version 2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:build": "docker build --no-cache --pull -t avoidwork/${npm_package_name}:latest .",
+    "docker:build:windows": "docker build --no-cache --pull -t avoidwork/%npm_package_name%:latest .",
+    "docker:version": "docker image tag avoidwork/${npm_package_name}:latest avoidwork/${npm_package_name}:${npm_package_version}",
+    "docker:version:windows": "docker image tag avoidwork/%npm_package_name%:latest avoidwork/%npm_package_name%:%npm_package_version%",
+    "docker:push": "docker image push avoidwork/${npm_package_name}:latest && docker image push avoidwork/${npm_package_name}:${npm_package_version}",
+    "docker:push:windows": "docker image push avoidwork/%npm_package_name%:latest && docker image push avoidwork/%npm_package_name%:%npm_package_version%",
+    "docker:release": "npm run docker:build && npm run docker:version && npm run docker:push",
+    "docker:release:windows": "npm run docker:build:windows && npm run docker:version:windows && npm run docker:push:windows"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/avoidwork/roon.git"
+  },
+  "keywords": [
+    "roon",
+    "docker",
+    "ubuntu"
+  ],
+  "author": "Jason Mulligan <jason.mulligan@avoidwork.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avoidwork/roon/issues"
+  },
+  "homepage": "https://github.com/avoidwork/roon#readme"
+}
