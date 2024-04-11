@@ -1,7 +1,7 @@
 {
   "name": "roon",
-  "version": "2.0.1392",
-  "description": "Roon Server version 2.0",
+  "version": "2.0.32",
+  "description": "Roon Server version 2.0 (1392)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
