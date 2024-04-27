@@ -1,12 +1,22 @@
 # roon
 Roon core on Ubuntu 22.04 LTS
 
-## Directories
+Don't re-pull the image when Roon releases a new version; it will upgrade within the container.
 
-Recommended to bind mount:
+## Extract Server Directories
 
-1. /var/run/RoonServer/Logs
-1. /music
+Do this before setting a mount at `/var/roon/RoonServer`!
+
+1. Create a volume or bind mount at `/var/roon/RoonServer1`
+1. Create a shell inside the container, run `docker exec -it $CONTAINER_NAME /bin/bash`
+1. Run `apt install -y rsync && cd /var/roon && rsync -avu RoonServer/ RoonServer1`
+1. Run `exit` to exit the shell; your volume or bind mount will now have the server files
+1. Amend volume or bind mount to be `/var/roon/RoonServer` & re-deploy 
+
+## Recommended Mounts
+
+1. `/music`
+1. `/var/roon/RoonServer`
 
 ## Ports
 
@@ -32,6 +42,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
+      - roon:/var/roon/RoonServer
       - /media/music:/music
     ports:
       - 55000:55000/tcp
@@ -53,7 +64,12 @@ docker run -d \
   -p 9330-9339:9330-9339/tcp \
   -p 30000-30009:30000-30009/tcp \
   -p 9003:9003/udp \
+  -v roon:/var/roon/RoonServer \
   -v /media/music:/music \
   --restart unless-stopped \
   avoidwork/roon:latest
 ```
+
+## Github
+
+https://github.com/avoidwork/roon
