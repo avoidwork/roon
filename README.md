@@ -1,5 +1,5 @@
 # roon
-Roon core on Ubuntu 22.04 LTS
+Roon Server on Ubuntu 22.04 LTS
 
 Don't re-pull the image when Roon releases a new version; it will upgrade within the container.
 
