@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docker:build": "docker build --no-cache --pull -t avoidwork/${npm_package_name}:latest .",
-    "docker:build:windows": "docker build --no-cache --pull -t avoidwork/%npm_package_name%:latest .",
-    "docker:version": "docker image tag avoidwork/${npm_package_name}:latest avoidwork/${npm_package_name}:${npm_package_version}",
-    "docker:version:windows": "docker image tag avoidwork/%npm_package_name%:latest avoidwork/%npm_package_name%:%npm_package_version%",
-    "docker:push": "docker image push avoidwork/${npm_package_name}:latest && docker image push avoidwork/${npm_package_name}:${npm_package_version}",
-    "docker:push:windows": "docker image push avoidwork/%npm_package_name%:latest && docker image push avoidwork/%npm_package_name%:%npm_package_version%",
+    "docker:build": "docker build --no-cache --pull -t avoidwork/${npm_package_name}:${npm_package_version} .",
+    "docker:build:windows": "docker build --no-cache --pull -t avoidwork/%npm_package_name%:%npm_package_version% .",
+    "docker:version": "docker image tag avoidwork/${npm_package_name}:${npm_package_version} avoidwork/${npm_package_name}:latest",
+    "docker:version:windows": "docker image tag avoidwork/%npm_package_name%:%npm_package_version% avoidwork/%npm_package_name%:latest",
+    "docker:push": "docker image push avoidwork/${npm_package_name}:${npm_package_version} && docker image push avoidwork/${npm_package_name}:latest",
+    "docker:push:windows": "docker image push avoidwork/%npm_package_name%:%npm_package_version% && docker image push avoidwork/%npm_package_name%:latest",
     "docker:release": "npm run docker:build && npm run docker:version && npm run docker:push",
     "docker:release:windows": "npm run docker:build:windows && npm run docker:version:windows && npm run docker:push:windows"
   },
